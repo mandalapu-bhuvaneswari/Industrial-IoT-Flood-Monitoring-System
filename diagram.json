@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "author": "ChatGPT",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 100, "left": 100, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic",
+      "top": 11.1,
+      "left": 245.5,
+      "attrs": { "distance": "2" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_red",
+      "top": 15.6,
+      "left": -53.8,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_yellow",
+      "top": 63.6,
+      "left": -44.2,
+      "attrs": { "color": "yellow" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_green",
+      "top": 121.2,
+      "left": -53.8,
+      "attrs": { "color": "green" }
+    },
+    { "type": "wokwi-buzzer", "id": "buzzer", "top": 213.6, "left": 347.4, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:3V3", "ultrasonic:VCC", "green", [ "v0.7", "h115.5" ] ],
+    [ "esp:D5", "ultrasonic:TRIG", "green", [ "h134.7", "v-85.7" ] ],
+    [ "esp:D18", "ultrasonic:ECHO", "green", [ "h144.3", "v-76.1" ] ],
+    [ "esp:D23", "led_red:C", "green", [ "h-239.7", "v-66.4" ] ],
+    [ "esp:D21", "led_green:C", "green", [ "h-239.7", "v-9.3" ] ],
+    [ "esp:D22", "led_yellow:C", "green", [ "h0" ] ],
+    [ "esp:D19", "buzzer:1", "green", [ "h173.1", "v125.4" ] ],
+    [ "esp:GND.1", "ultrasonic:GND", "black", [ "h0" ] ],
+    [ "buzzer:2", "esp:GND.1", "green", [ "v-48", "h-48.4", "v0", "h-124.8" ] ],
+    [ "led_green:A", "esp:GND.2", "green", [ "v86.4", "h134.4" ] ],
+    [ "led_yellow:A", "esp:GND.2", "green", [ "v144", "h105.6" ] ],
+    [ "led_red:A", "esp:GND.2", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
